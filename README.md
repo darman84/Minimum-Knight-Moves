@@ -9,7 +9,7 @@
 Given a square chessboard of N x N size, the position of Knight and position of a target is given. We need to find out minimum steps a Knight will take to reach the target position.
 
 Examples:
-
+![EXAMPLE](https://raw.githubusercontent.com/darman84/Minimum-Knight-Moves/master/EXAMPLE.PNG)
 
 
 In above diagram Knight takes 3 step to reach 
