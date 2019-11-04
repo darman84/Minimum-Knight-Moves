@@ -10,11 +10,11 @@
 Solution created by: <br/>
 👤 **Zachary Williams (aka darman84)**
 
-*See /Container-With-Most-Water/Source.CPP for finished program/explanation with driver included*
+*See /Minimum Knight Moves/Minimum Knight Moves/Source.cpp for finished program/explanation with driver included*
 
 ## Description
 
-- This is a problem presented by [LeetCode](https://leetcode.com/problems/container-with-most-water/)
+- This is a problem presented by [GeeksForGeeks](https://www.geeksforgeeks.org/minimum-steps-reach-target-knight//)
 
 Given a square chessboard of N x N size, the position of Knight and position of a target is given. We need to find out minimum steps a Knight will take to reach the target position.
 
