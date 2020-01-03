@@ -3,7 +3,7 @@
 
 > Status: Incomplete
 >
-> Version: 1.0.0
+> Version: 1.0.1
 >
 > Difficulty: HARD<br/>
 
@@ -28,6 +28,9 @@ In above diagram Knight takes 3 step to reach  from (4, 5) to (1, 1) (4, 5) -> (
 **Additional**: Using OpenGL, create an illustration of the path that your knight takes to reach the target
 
 ## Changelog
+
+#### Version 1.0.1
+- Basic OpenGL implementation with GLAD, board is not yet complete
 
 #### Version 1.0.0
 
