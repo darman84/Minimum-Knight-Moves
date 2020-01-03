@@ -35,3 +35,4 @@ In above diagram Knight takes 3 step to reach  from (4, 5) to (1, 1) (4, 5) -> (
 - User input of knight position and target position not yet implemented
 - OpenGL usage not yet implemented
 - Program currently only displays in CMD how many steps the knight needs to take
+- Program code is NOT yet portable
