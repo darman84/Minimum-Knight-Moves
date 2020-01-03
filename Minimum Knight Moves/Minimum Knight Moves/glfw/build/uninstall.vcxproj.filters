@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\build\CMakeFiles\b83d3526a3d52e12722c563ddb8f0142\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\build\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{0DCB7F4B-81F9-3FCA-90B6-A7A34BB24E2E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\input.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\monitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\vulkan.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\win32_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\win32_joystick.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\win32_monitor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\win32_time.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\win32_thread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\win32_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\wgl_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\egl_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\osmesa_context.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\mappings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\build\src\glfw_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\include\GLFW\glfw3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\include\GLFW\glfw3native.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\win32_platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\win32_joystick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\wgl_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\egl_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\osmesa_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="J:\COSC Freelance Projects\Minimum Knight Moves Git\Minimum-Knight-Moves\Minimum Knight Moves\Minimum Knight Moves\glfw\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B97997A2-2CD3-3675-B390-F3C2FE6B62E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{FCAE1111-41D6-3E93-8CE0-4CA1A44A8A62}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
