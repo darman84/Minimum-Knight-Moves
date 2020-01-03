@@ -1,9 +1,11 @@
 <h1 align="center">Minimum-Knight-Moves
 </h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-</p>
-Difficulty: HARD<br/>
+
+> Status: Incomplete
+>
+> Version: 0.1.0
+>
+> Difficulty: HARD<br/>
 
 ## Author
 
@@ -24,3 +26,12 @@ Examples: <br/>
 In above diagram Knight takes 3 step to reach  from (4, 5) to (1, 1) (4, 5) -> (5, 3) -> (3, 2)  -> (1, 1)  as shown in diagram
 
 **Additional**: Using OpenGL, create an illustration of the path that your knight takes to reach the target
+
+## Changelog
+
+#### Version 0.1.0
+
+- Initial project release
+- User input of knight position and target position not yet implemented
+- OpenGL usage not yet implemented
+- Program currently only displays in CMD how many steps the knight needs to take
