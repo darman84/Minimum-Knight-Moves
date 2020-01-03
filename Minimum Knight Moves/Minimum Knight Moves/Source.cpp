@@ -1,22 +1,32 @@
 // Zachary Williams
 // 11/2/19 was the starting date for this project, however I have been working infrequently on this
 // project due to time restrictions with personal life/work/school
-//
-//
+// Note that some of the following code is HEAVILY documented for educational purposes
+// 
 
-// Please note that the #includes that were commented out were for usage with GLEW/GLUT
-// and are not currently needed for this project, I will keep them here for reference
-// in case I change my mind
+
 #include <iostream>
-//#include <windows.h>
 #include <chrono>
 #include <queue>
-//#include <GLFW/glfw3.h>
-//#include <GL/GL.h>
-//#include <GL/GLU.h>
-//#include <GL/glut.h>
-//#include "ShaderUtil.h"
 #include <glad/glad.h> 
+#include <GLFW/glfw3.h>
+
+
+
+// shaders(R,G,B,OPACITY)
+const char *vertexShaderSource = "#version 330 core\n"
+"layout (location = 0) in vec3 aPos;\n"
+"void main()\n"
+"{\n"
+"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+"}\0";
+// calculating the color output of the pixels
+const char *fragmentShaderSource = "#version 330 core\n"
+"out vec4 FragColor;\n"
+"void main()\n"
+"{\n"
+"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"}\n\0";
 
 using namespace std;
 
@@ -95,118 +105,28 @@ int minSteps(int knightPos[], int targetPos[], int size)
 			}
 		}
 	}
+	return 0;
 }
 
-/*
-	Please ignore the drawMyWindow function below, this function was originally being written for GLEW, which I
-	have now decided to not use in this project
-*/
-#if 0
-int drawMyWindow()
+
+
+
+// The function below is called whenever the window changes in size by GLFW and fills in the proper arguments
+// for you to process
+// framebuffer_size_callback args below
+// framebuffer_size_callback(GLFWwindow, new window width, new window height)
+void framebuffer_size_callback(GLFWwindow* myWindow, int width, int height)
 {
-	GLFWwindow* window;
+	glViewport(0, 0, width, height);
+}
 
-	// Initialize the library 
-	if (!glfwInit())
-		return -1;
-
-	// Create a windowed mode window and its OpenGL context 
-	window = glfwCreateWindow(640, 480, "Board", NULL, NULL);
-	if (!window)
-	{
-		glfwTerminate();
-		return -1;
-	}
-
-	// Make the window's context current 
-	glfwMakeContextCurrent(window);
-
-	GLenum err = glewInit();
-	if (GLEW_OK != err)
-	{
-		// Problem: glewInit failed, something is seriously wrong. 
-		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
-
-	}
-	else
-	{
-		fprintf(stdout, "Status: Using GLEW %s\n", glewGetString(GLEW_VERSION));
-
-		// TODO: Create and compile shaders here (vertex and fragment shaders)
-			// and finally draw something with modern OpenGL!
-		ShaderUtil shaderUtil;
-		shaderUtil.Load("shaders/vs.shader", "shaders/fs.shader");
-		
-		// Points for triangle
-		/*
-		float points[6] = {
-
-			// Left
-			-0.8f, -0.5f,
-
-			// Top
-			0.0f, 0.9f,
-
-			// Right
-			0.5f, -0.7f
-		};
-		*/
-
-		// Points for chess board
-		float points[8] = {
-
-			// Top left
-			-0.9f, 0.9f,
-
-			// Top right
-			0.9f, 0.9f,
-
-			// Bottom right
-			0.9f, -0.9f,
-
-			// Bottom left
-			-0.9f, -0.9f
-		};
-
-		unsigned int buffer;
-
-		// Create a buffer
-		glGenBuffers(1, &buffer);
-
-		// Bind the buffer to vertx attributes
-		glBindBuffer(GL_ARRAY_BUFFER, buffer);
-
-		// Init buffer
-		glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), points, GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-		shaderUtil.Use();
-
-		// Loop until the user closes the window 
-		while (!glfwWindowShouldClose(window))
-		{
-			// Render here 
-			glClear(GL_COLOR_BUFFER_BIT);
-
-			// Draw triangle
-			//glDrawArrays(GL_TRIANGLES, 0, 3);
-			glDrawArrays(GL_LINE_LOOP, 0, 4);
-
-			// Swap front and back buffers 
-			glfwSwapBuffers(window);
-
-			// Poll for and process events 
-			glfwPollEvents();
-		}
-		shaderUtil.Delete();
-	}
-
-	glfwTerminate();
-
-} 
-#endif
+// processInput allows the user to close the window using the escape key
+void processInput(GLFWwindow *myWindow)
+{
+	// check if user has pressed the escape key
+	if (glfwGetKey(myWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(myWindow, true); //set to true if escape is pressed
+}
 
 
 int main(int argc, char ** argv)
@@ -216,12 +136,207 @@ int main(int argc, char ** argv)
 	int size = 30;
 
 
+
 	cout << "The minimum number of steps to reach the target is " << minSteps(knightPos, targetPos, size) << endl;
+	
+	glfwInit(); // Intitializing glfw
+
+	// glfwWindowHint args below
+	// glfwWindowHint(What option we want to configure, integer that sets the value of our option)
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // Telling GLFW that 3.3 is version of OpenGl we want to use
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // Using core profile explicitly
+	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); //needed for OS X
+	
+	// glfwCreateWindow args below
+	// glfwCreateWindow(width of window, height of window, name for the window, ignore, ignore)
+	GLFWwindow* myWindow = glfwCreateWindow(800, 600, "Board", NULL, NULL);
+	if (myWindow == NULL)
+	{
+		cout << "Failed to create GLFW window" << endl;
+		glfwTerminate();
+		return -1;
+	}
+	glfwMakeContextCurrent(myWindow);
+	glfwSetFramebufferSizeCallback(myWindow, framebuffer_size_callback);
+
+	// Initializing GLAD
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		cout << "Failed to initialize GLAD" << endl;
+		return -1;
+	}
+
+	// Telling OpenGL the size of the rendering window
+	// glViewport args below
+	// glViewport(x location of the lower left corner of the window,
+	//			  y location of the lower left corner of the window,				
+	//			  width of the window,	
+	//			  height of the window)
+	// Note: We could actually set the viewport dimensions at values smaller than GLFW's dimensions;
+	// then all the OpenGL rendering would be displayed in a smaller window and we could for example display
+	// other elements outside the OpenGL viewport. 
+	// glViewport(0, 0, 800, 600);
+
+		// x,y,z, 3 vertices in this example, z coordinate is zero so that the object remains 2D
+	/* for triangle
+	float vertices[] = 
+	{
+	   -0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.0f,  0.5f, 0.0f
+	};
+	*/
+
+	// For rectangle
+	float vertices[] = 
+	{
+		 0.5f,  0.5f, 0.0f,  // top right
+		 0.5f, -0.5f, 0.0f,  // bottom right
+		-0.5f, -0.5f, 0.0f,  // bottom left
+		-0.5f,  0.5f, 0.0f   // top left 
+	};
+	unsigned int indices[] = 
+	{  // note that we start from 0!
+		0, 1, 3,   // first triangle
+		1, 2, 3    // second triangle
+	};
+	// Creation of the element buffer object for the creation of a rectangle
+	unsigned int EBO;
+	glGenBuffers(1, &EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	// Generation of a vertex buffer object with a buffer ID
+	unsigned int VBO;
+	glGenBuffers(1, &VBO);
+
+	// Generate a Vertex Array Object
+	unsigned int VAO;
+	glGenVertexArrays(1, &VAO);
+	// 1. bind Vertex Array Object
+	glBindVertexArray(VAO);
+	// 2. copy our vertices array in a buffer for OpenGL to use
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	// 3. then set our vertex attributes pointers
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	// Binding the newly created buffer to the GL_ARRAY_BUFFER target with the glBindBuffer function
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	// glBufferData Copies the previously defined vertex data into the buffer's memory
+	// glBufferData args below
+	// glBufferData(the type of buffer we want to copy data into, size of the data in bytes we want to pass to the buffer,
+	//				the actual data we want to send, how we want the graphics card to manage the given data)
+	// 4th param options - 
+	// GL_STATIC_DRAW: the data will most likely not change at all or very rarely.
+	// GL_DYNAMIC_DRAW : the data is likely to change a lot.
+	// GL_STREAM_DRAW : the data will change every time it is drawn.
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	// Dynamically compile the shader at run-time from it's source code
+	unsigned int vertexShader;
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+
+	// glShaderSource args below
+	// glShaderSource(shader object, how many strings we're passing as source code, the actual source code of the vertex shader, NULL)
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+	glCompileShader(vertexShader);
+	// Checking for compile time errors
+	int  success;
+	char infoLog[512];
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+	if (!success)
+	{
+		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+	}
+
+
+	unsigned int fragmentShader;
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+	glCompileShader(fragmentShader);
+
+	// Creating a program object
+	unsigned int shaderProgram;
+	shaderProgram = glCreateProgram(); // Creates a program and returns the ID reference to the newly created program object
+	// Attaching the previously compiled shaders to the program object
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	// Linking the shaders to the program object
+	glLinkProgram(shaderProgram);
+
+	// check for linking errors
+	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+	if (!success) {
+		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+		cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << endl;
+	}
+
+	glUseProgram(shaderProgram); // Activating the program object
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+
+	// Telling OpenGL how to interpret the vertex data per vertex attribute
+	// glVertexAttribPointer args below
+	// glVertexAtrribPointer( 
+	//	1. which vertex attribute we want to configure, we specified the location of the position vertex attribute
+	//	in the vertex shader with layout (location = 0). This sets the location of the vertex attribute to 0 and since
+	//	we want to pass data to this vertex attribute, we pass in 0
+	//	2. size of the vertex attribute, vertex attribute is a vec3 so it's composed of 3 values
+	//  3. the type of the data which is GL_FLOAT (a vec* in GLSL consists of floating point values)
+	//	4. specifies if we want the data to be normalized. If we're inputting integer data types (int, byte)
+	//	and we've set this to GL_TRUE, the integer data is normalized to 0 (or -1 for signed data) and 1 when converted
+	//	to float. This is not relevant for us so we'll leave this at GL_FALSE.
+	//	5. the "stride"; tells us the space between consecutive vertex attributes. Since the next set of position data
+	//	is located exactly 3 times the size of a float away we specify that value as the stride. Note that since we know
+	//	that the array is tightly packed (there is no space between the next vertex attribute value) we could've also
+	//	specified the stride as 0 to let OpenGL determine the stride (this only works when values are tightly packed).
+	//	Whenever we have more vertex attributes we have to carefully define the spacing between each vertex attribute
+	//	6. of type void*; the offset of where the position data begins in the buffer. Because the position data is at
+	//	the start of the data array the value is 0 here.
+	//		)
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+
+	// Render loop that keeps the program open
+	// checks at the start of each loop iteration if GLFW has been instructed to close. If so, the function 
+	// returns true and the game loop stops running, after which we can close the application
+	while (!glfwWindowShouldClose(myWindow))
+	{
+		// Input
+		processInput(myWindow);
+
+		// All rendering commands should go HERE
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		// drawing a triangle
+		glUseProgram(shaderProgram);
+		glBindVertexArray(VAO);
+		// glDrawArrays args below
+		// glDrawArrays(OpenGL primitive type that we want to draw, starting index of the vertex array we want to draw, how many vertices)
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		// drawing a rectangle
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+		// Check and call events and swap the buffers
+		// glfwSwapBuffers will swap the color buffer (a large 2D buffer that contains color values for each pixel in GLFW's window)
+		// that is used to render to during this render iteration and show it as output to the screen. 
+		glfwSwapBuffers(myWindow);
+		// glfwPollEvents checks if any events are triggered(like keyboard input or mouse movement events), updates the window state, 
+		//and calls the corresponding functions(which we can register via callback methods)
+		glfwPollEvents();
+	}
+
+
 	//drawMyWindow(); //was for glew, ignore.
 
-
-
-
+	// Function below intended for usage involving performance, will be implemented later
 	/*
     auto start = chrono::steady_clock::now();
 	//
@@ -231,7 +346,8 @@ int main(int argc, char ** argv)
     // Store the time difference between start and end
 	auto diff = end - start;
 	*/
-
+	
+	glfwTerminate();
 	system("pause");
 	return 0;
 }
