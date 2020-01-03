@@ -3,7 +3,7 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
-
+[![Build Status](http://localhost:8080/buildStatus/icon?job=Minimum+Knight+Moves)](http://localhost:8080/job/Minimum%20Knight%20Moves/)
 > Difficulty: HARD<br/>
 
 ## Author
