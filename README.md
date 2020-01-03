@@ -3,7 +3,7 @@
 
 > Status: Incomplete
 >
-> Version: 0.1.0
+> Version: 1.0.0
 >
 > Difficulty: HARD<br/>
 
@@ -29,7 +29,7 @@ In above diagram Knight takes 3 step to reach  from (4, 5) to (1, 1) (4, 5) -> (
 
 ## Changelog
 
-#### Version 0.1.0
+#### Version 1.0.0
 
 - Initial project release
 - User input of knight position and target position not yet implemented
