@@ -18,7 +18,7 @@ Solution created by: <br/>
 
 - This is a problem presented by [GeeksForGeeks](https://www.geeksforgeeks.org/minimum-steps-reach-target-knight//), with a twist to the project added on by me, personally
 
-Given a square chessboard of N x N size, the position of Knight and position of a target is given. We need to find out minimum steps a Knight will take to reach the target position.
+Given a square chessboard of N x N size, the position of Knight and position of a target is given. We need to find out the minimum steps a Knight will take to reach the target position.
 
 Examples: <br/>
 ![EXAMPLE](https://raw.githubusercontent.com/darman84/Minimum-Knight-Moves/master/EXAMPLE.PNG)
