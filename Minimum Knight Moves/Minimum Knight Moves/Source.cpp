@@ -2,7 +2,8 @@
 // 11/2/19 was the starting date for this project, however I have been working infrequently on this
 // project due to time restrictions with personal life/work/school
 // Note that some of the following code is HEAVILY documented for educational purposes
-// 
+// TODO: if possible, allow the user to CLICK where they would like to have the target and knight 
+// position on the OpenGL window
 
 
 #include <iostream>
@@ -11,8 +12,23 @@
 #include <glad/glad.h> 
 #include <GLFW/glfw3.h>
 
-
-
+////////////////// ----shaders template----///////////////
+//#version version_number
+//in type in_variable_name;
+//in type in_variable_name;
+//
+//out type out_variable_name;
+//
+//uniform type uniform_name;
+//
+//void main()
+//{
+//	// process input(s) and do some weird graphics stuff
+//	...
+//		// output processed stuff to output variable
+//		out_variable_name = weird_stuff_we_processed;
+//}
+////////////////////////////////////////////////////////
 // shaders(R,G,B,OPACITY)
 const char *vertexShaderSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
@@ -128,8 +144,19 @@ void processInput(GLFWwindow *myWindow)
 		glfwSetWindowShouldClose(myWindow, true); //set to true if escape is pressed
 }
 
+// checkMaxAttributes allows the user to check for the maximum number of vertex attributes that is allowed by their hardware.
+// there are always at least 16 4-component vertex attributes available,
+// but some hardware might allow for more which you can retrieve by querying GL_MAX_VERTEX_ATTRIBS: 
+/*
+void checkMaxAttributes()
+{
+	int nrAttributes;
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
+	cout << "Maximum nr of vertex attributes supported: " << nrAttributes << endl;
+}
+*/
 
-int main(int argc, char ** argv)
+int main()
 {
 	int knightPos[] = { 1,1 };
 	int targetPos[] = { 30, 30 };
@@ -138,7 +165,11 @@ int main(int argc, char ** argv)
 
 
 	cout << "The minimum number of steps to reach the target is " << minSteps(knightPos, targetPos, size) << endl;
-	
+	//checkMaxAttributes(); // getting an access violation error, will fix later
+	cout << "Initializing GLFW... " << endl;
+	do {
+		cout << '\n' << "Press the Enter key to open the OpenGL window.";
+	} while (cin.get() != '\n');
 	glfwInit(); // Intitializing glfw
 
 	// glfwWindowHint args below
@@ -310,12 +341,13 @@ int main(int argc, char ** argv)
 		processInput(myWindow);
 
 		// All rendering commands should go HERE
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f); // set background color to light green
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// drawing a triangle
+		
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
+		// drawing a triangle
 		// glDrawArrays args below
 		// glDrawArrays(OpenGL primitive type that we want to draw, starting index of the vertex array we want to draw, how many vertices)
 		//glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -334,8 +366,6 @@ int main(int argc, char ** argv)
 	}
 
 
-	//drawMyWindow(); //was for glew, ignore.
-
 	// Function below intended for usage involving performance, will be implemented later
 	/*
     auto start = chrono::steady_clock::now();
@@ -348,6 +378,8 @@ int main(int argc, char ** argv)
 	*/
 	
 	glfwTerminate();
-	system("pause");
+	do {
+		cout << '\n' << "Press the Enter key to continue.";
+	} while (cin.get() != '\n');
 	return 0;
 }
