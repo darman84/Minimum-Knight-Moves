@@ -3,7 +3,7 @@
 
 > Status: Incomplete
 >
-> Version: 1.0.1
+> Version: 1.0.2
 >
 > Difficulty: HARD<br/>
 
@@ -29,11 +29,13 @@ In above diagram Knight takes 3 step to reach  from (4, 5) to (1, 1) (4, 5) -> (
 
 ## Changelog
 
+#### Version 1.0.2
+- Code should now be portable, and should work on any Windows 64 system. A different OS will require some tweaking most likely
+
 #### Version 1.0.1
 - Basic OpenGL implementation with GLAD, board is not yet complete
 
 #### Version 1.0.0
-
 - Initial project release
 - User input of knight position and target position not yet implemented
 - OpenGL usage not yet implemented
